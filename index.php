@@ -20,7 +20,7 @@ try{
 }
 
 try{
-    $sql1 = "SELECT p.id, u.id AS user_id, u.first_name, u.last_name, p.text, p.created FROM users u INNER JOIN posts p ON u.id=p.user_id;";
+    $sql1 = "SELECT p.id, u.id AS user_id, u.first_name, u.last_name, p.text, p.created FROM users u INNER JOIN posts p ON u.id=p.user_id ORDER BY p.created ASC;";
     $query1 = $conn -> prepare($sql1);
     $query1 -> execute();
     $result1 = $query1 -> fetchAll();
