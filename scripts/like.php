@@ -10,7 +10,7 @@ if(isset($_GET['post']) && isset($_GET['user'])){
     $sql = "SELECT * FROM post_likes WHERE user_id='$userId' AND post_id='$postId'";
     $query = $conn->prepare($sql);
     $query->execute();
-    $result = $query -> fetchAll();
+    $result = $query -> fetch();
 
     if(empty($result)){
         try{
@@ -24,6 +24,10 @@ if(isset($_GET['post']) && isset($_GET['user'])){
         }
     }
     else{
+        $likeid = $result['id'];
+        $sql1 = "DELETE FROM post_likes WHERE id='$likeid'";
+        $query1 = $conn->prepare($sql1);
+        $query1->execute();
         header("Location: ../index.php");
         die;
     }
