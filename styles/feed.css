@@ -1,0 +1,34 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main-section{
+    padding: 1.25rem;
+    height: 100vh;
+    background-color: aqua;
+    display: grid;
+    grid-template-columns: 1.5fr 6fr 2fr;
+    gap: 1.25rem;
+}
+
+.my-group-container{
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 100%;
+}
+
+
+.my-group-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    margin: 1rem 0;
+}
+
+#three{
+    grid-row: 1/ span 2;
+}
