@@ -10,7 +10,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $query = $conn->prepare($sql);
     $query->execute();
 
-    header('Location: ../');
+    header('Location: ../index.php');
+} else {
+    header('Location: ../index.php');
+    die();
 }
 
 

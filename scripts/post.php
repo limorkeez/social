@@ -13,13 +13,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $query = $conn->prepare($sql);
         $query->execute();
         header("Location: ../index.php");
-        die;
+        die();
     } catch(PDOException $e){
         echo 'Error in inserting data: '.$e->getMessage();
     }
 } else {
     header("Location: ../index.php");
-    die;
+    die();
 }
 
 

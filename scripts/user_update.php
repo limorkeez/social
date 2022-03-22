@@ -18,6 +18,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $_SESSION['userLname'] = $lname;
 
     header('Location: ../');
+} else {
+    header('Location: ../index.php');
+    die();
 }
 
 

@@ -18,7 +18,7 @@ if(isset($_GET['post']) && isset($_GET['user'])){
             $query1 = $conn->prepare($sql1);
             $query1->execute();
             header("Location: ../index.php");
-            die;
+            die();
         } catch(PDOException $e){
             echo 'Error in gettting data: '.$e->getMessage();
         }
@@ -29,11 +29,11 @@ if(isset($_GET['post']) && isset($_GET['user'])){
         $query1 = $conn->prepare($sql1);
         $query1->execute();
         header("Location: ../index.php");
-        die;
+        die();
     }
 } else {
     header("Location: ../index.php");
-    die;
+    die();
 }
 
 

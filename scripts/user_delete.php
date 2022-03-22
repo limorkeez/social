@@ -17,6 +17,9 @@ if(isset($_GET['userid'])){
         header('Location: ../index.php');
     }
 
+} else{
+    header('Location: ../index.php');
+    die();
 }
 
 ?>
