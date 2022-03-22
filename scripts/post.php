@@ -3,7 +3,7 @@ session_start();
 require_once("../db_inc.php");
 
 
-if(!empty($_POST['postText'])){
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $current_user = $_SESSION['user'];
     $text = $_POST['postText'];
 

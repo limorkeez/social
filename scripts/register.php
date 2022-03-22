@@ -2,7 +2,7 @@
 
 require_once("../db_inc.php");
 
-if($_POST){
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $firstName = $_POST['fname'];
     $lastName = $_POST['lname'];
     $email = $_POST['email'];

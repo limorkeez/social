@@ -3,7 +3,7 @@ session_start();
 require_once("../db_inc.php");
 
 //susirenkam login info is formos
-if($_POST){
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $email = $_POST['email'];
     $password = $_POST['password'];
 }

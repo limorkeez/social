@@ -2,7 +2,7 @@
 session_start();
 require_once "../db_inc.php";
 
-if($_SERVER['REQUEST_METHOD'] === 'GET'){
+if(isset($_GET['userid'])){
     $user = $_GET['userid'];
     if($user == $_SESSION['user'] || $_SESSION['user'] == 9){
         $sql = "DELETE FROM users WHERE id=".$user;
