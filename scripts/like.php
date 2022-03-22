@@ -2,33 +2,31 @@
 require_once("../db_inc.php");
 
 
-if($_SERVER['REQUEST_METHOD'] == 'GET'){
+if(isset($_GET['post']) && isset($_GET['user'])){
 
     $postId = $_GET['post'];
     $userId = $_GET['user'];
 
-    try{
-        $sql = "INSERT INTO post_likes(user_id, post_id) 
-                SELECT $userId, $postId
-                FROM posts
-                WHERE NOT EXISTS (
-                    SELECT id
-                    FROM post_likes
-                    WHERE user_id = $userId
-                    AND post_id = $postId)
-                LIMIT 1;
-                ";
-        $query = $conn->prepare($sql);
-        $query->execute();
+    $sql = "SELECT * FROM post_likes WHERE user_id='$userId' AND post_id='$postId'";
+    $query = $conn->prepare($sql);
+    $query->execute();
+    $result = $query -> fetchAll();
+
+    if(empty($result)){
+        try{
+            $sql1 = "INSERT INTO post_likes(user_id, post_id) VALUES ('$userId', '$postId')";
+            $query1 = $conn->prepare($sql1);
+            $query1->execute();
+            header("Location: ../index.php");
+            die;
+        } catch(PDOException $e){
+            echo 'Error in gettting data: '.$e->getMessage();
+        }
+    }
+    else{
         header("Location: ../index.php");
         die;
-    } catch(PDOException $e){
-        echo 'Error in gettting data: '.$e->getMessage();
     }
-
-
-
-
 } else {
     header("Location: ../index.php");
     die;
