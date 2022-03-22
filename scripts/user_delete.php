@@ -4,7 +4,7 @@ require_once "../db_inc.php";
 
 if($_SERVER['REQUEST_METHOD'] === 'GET'){
     $user = $_GET['userid'];
-    if($user == $_SESSION['user'] || $_SESSION['userFname'] == 'admin'){
+    if($user == $_SESSION['user'] || $_SESSION['user'] == 9){
         $sql = "DELETE FROM users WHERE id=".$user;
         $query = $conn->prepare($sql);
         $query -> execute();
